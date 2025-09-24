@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Revolution JPII - Bienvenida</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet" />
+  <style>
+    /* ------------------- ESTILOS BASE ------------------- */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: "Montserrat", sans-serif; line-height: 1.7; background: #050a1a; color: #f5faff; }
+    body::before { content: ""; position: fixed; inset: 0; background: url("https://www.transparenttextures.com/patterns/asfalt-light.png"); opacity: 0.08; pointer-events: none; z-index: -1; }
+    :root { --azul: #3487e5; --celeste: #00c6ff; --azul-oscuro: #0a1a3a; }
+
+    /* ------------------- HEADER Y NAV ------------------- */
+    header {
+      width: 100%;
+      padding: 1.5rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #0d0d2b;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      flex-wrap: wrap; 
+    }
+    header .logo { font-size: 2rem; font-weight: 800; color: var(--azul); transition: all 0.4s ease; }
+    header .logo:hover { text-shadow: 0 0 12px var(--celeste), 0 0 24px var(--azul); transform: scale(1.05); }
+    nav ul { display: flex; list-style: none; gap: 1.5rem; flex-wrap: wrap; }
+    nav ul li a { color: #f5faff; font-weight: 600; transition: all 0.4s ease; white-space: nowrap; }
+    nav ul li a:hover { color: var(--celeste); text-shadow: 0 0 8px var(--azul), 0 0 18px var(--celeste); }
+
+    /* ------------------- HERO ------------------- */
+    .hero {
+      min-height: 110vh; /* más alto para espacio extra */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 4rem 2rem; /* más espacio arriba y abajo */
+      position: relative;
+      background: url("https://images.unsplash.com/photo-1520975922132-78b91b1d1a2b?auto=format&fit=crop&w=1600&q=80") no-repeat center/cover;
+    }
+    .hero::after { content: ""; position: absolute; inset: 0; background: rgba(0, 0, 40, 0.8); }
+    .hero-content { position: relative; z-index: 2; max-width: 900px; }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1.8rem;
+      font-weight: 800;
+      color: #00c6ff;
+      text-shadow: 2px 2px 6px #0a1a3a, 0 0 10px #00c6ff, 0 0 20px #00c6ff;
+      transition: all 0.5s ease;
+    }
+    .hero h1:hover {
+      text-shadow: 3px 3px 8px #0a1a3a, 0 0 15px #00c6ff, 0 0 25px #00c6ff;
+      transform: scale(1.05);
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      margin-bottom: 3rem; /* más espacio para imagen debajo */
+      color: #dce7ff;
+      transition: all 0.4s ease;
+    }
+    .hero p:hover { color: var(--celeste); transform: translateY(-3px); text-shadow: 0 0 10px var(--azul); }
+
+    .btn {
+      display: inline-block;
+      padding: 16px 48px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #fff;
+      border-radius: 40px;
+      background: linear-gradient(135deg, var(--azul), #003366);
+      transition: all 0.4s ease;
+      box-shadow: 0 6px 20px rgba(0, 0, 60, 0.6);
+    }
+    .btn:hover { transform: scale(1.08); background: linear-gradient(135deg, #0050aa, var(--azul)); box-shadow: 0 12px 25px rgba(0, 0, 150, 0.9); }
+    .btn:active { transform: scale(0.95); box-shadow: inset 0 6px 12px rgba(0, 0, 60, 0.9), inset 0 -4px 8px rgba(0, 0, 150, 0.7); }
+
+    /* ------------------- SECCIONES ------------------- */
+    .section { max-width: 1200px; margin: 0 auto; padding: 7rem 2rem; }
+    .historia { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: center; }
+    .historia-text h2 { font-size: 2.6rem; margin-bottom: 1.5rem; color: var(--celeste); font-weight: 800; transition: all 0.4s ease; }
+    .historia-text h2:hover { text-shadow: 0 0 12px var(--azul), 0 0 24px var(--celeste); transform: scale(1.05); }
+    .historia-text p { margin-bottom: 1rem; color: #cfdafc; transition: all 0.3s ease; }
+    .historia-text p:hover { color: #ffffff; transform: translateX(5px); text-shadow: 0 0 8px var(--azul); }
+    .historia-img img { width: 100%; border-radius: 15px; box-shadow: 0 10px 25px rgba(0, 0, 50, 0.9); transition: all 0.35s ease; cursor: pointer; }
+    .historia-img img:hover { transform: scale(1.05); box-shadow: 0 15px 35px rgba(0, 0, 100, 1); }
+    .historia-img img:active { transform: scale(0.96); box-shadow: inset 0 6px 12px rgba(0, 0, 60, 0.8), inset 0 -4px 8px rgba(0, 0, 150, 0.6); }
+
+    .proposito, .porque, .vision, .mision { margin-top: 4.5rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 2rem; padding: 3.5rem; border-radius: 15px; background: linear-gradient(135deg, #0f1a33, #1b264f); box-shadow: 0 10px 30px rgba(0, 0, 60, 0.6); transition: all 0.4s ease; }
+    .proposito:hover, .porque:hover, .vision:hover, .mision:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0, 0, 100, 0.8); }
+
+    .proposito-text h2, .porque-text h2, .vision-text h2, .mision-text h2 { font-size: 2.4rem; margin-bottom: 1.2rem; color: var(--azul); transition: all 0.4s ease; }
+    .proposito-text h2:hover, .porque-text h2:hover, .vision-text h2:hover, .mision-text h2:hover { text-shadow: 0 0 10px var(--celeste), 0 0 20px var(--azul); }
+    .proposito-text p, .porque-text p, .vision-text p, .mision-text p { color: #d0e2ff; margin-bottom: 1rem; transition: all 0.3s ease; }
+    .proposito-text p:hover, .porque-text p:hover, .vision-text p:hover, .mision-text p:hover { color: #fff; transform: translateX(6px); text-shadow: 0 0 8px var(--azul); }
+    .proposito-img img, .porque-img img, .vision-img img, .mision-img img { max-width: 380px; border-radius: 12px; box-shadow: 0 12px 30px rgba(0, 0, 70, 0.9); transition: all 0.35s ease; cursor: pointer; }
+    .proposito-img img:hover, .porque-img img:hover, .vision-img img:hover, .mision-img img:hover { transform: scale(1.05); box-shadow: 0 18px 40px rgba(0, 0, 120, 1); }
+    .proposito-img img:active, .porque-img img:active, .vision-img img:active, .mision-img img:active { transform: scale(0.95); box-shadow: inset 0 6px 12px rgba(0, 0, 80, 0.9), inset 0 -4px 8px rgba(0, 0, 180, 0.7); }
+
+    /* ------------------- FOOTER ------------------- */
+    footer { background: #0d0d2b; color: #aabbee; text-align: center; padding: 2rem; margin-top: 4rem; border-top: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.4s ease; }
+    footer:hover { color: #fff; text-shadow: 0 0 10px var(--celeste); }
+
+    /* ------------------- MEDIA QUERIES ------------------- */
+    @media (max-width: 768px) {
+      header { flex-direction: column; align-items: flex-start; padding: 1rem 2rem; }
+      nav ul { flex-direction: column; gap: 1rem; margin-top: 0.5rem; }
+      .hero h1 { font-size: 2.3rem; }
+      .hero p { font-size: 1.1rem; margin-bottom: 2rem; }
+      .btn { padding: 14px 36px; font-size: 1.1rem; }
+      .historia { grid-template-columns: 1fr; gap: 2rem; }
+      .proposito, .porque, .vision, .mision { flex-direction: column; padding: 2.5rem; }
+      .proposito-img img, .porque-img img, .vision-img img, .mision-img img { max-width: 100%; }
+      .section { padding: 5rem 1rem; }
+      .hero { padding: 3rem 1rem; min-height: 100vh; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">⚡ Revolution JPII</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Bienvenida</a></li>
+        <li><a href="src/propuestas listo.html">Propuestas</a></li>
+        <li><a href="src/porque listo.html">Por qué nosotros</a></li>
+        <li><a href="src/periodico.html">La Voz Juanpablina</a></li>
+        <li><a href="src/clubes.html">Clubes</a></li>
+        <li><a href="src/clubes.html">Buzón</a></li>
+        <li><a href="src/donaciones.html">Donación</a></li>
+        <li><a href="src/politiicas listo.html">Políticas de Diversidad</a></li>
+        <li><a href="src/fenix.html">Fénix</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="bienvenida" class="hero">
+    <div class="hero-content">
+      <h1>“Revolution JPII: Libertad, Igualdad y Justicia”</h1>
+      <p>Un movimiento estudiantil que nace para unir a todos los juanpablinos y transformar nuestro colegio en un lugar de orgullo, respeto y oportunidades.</p>
+      <a href="#historia" class="btn">Conoce nuestra historia</a>
+      <!-- Aquí podrás agregar tu imagen debajo sin que se vea apretado -->
+    </div>
+  </section>
+
+  <section id="historia" class="section historia">
+    <div class="historia-text">
+      <h2>📖 Cómo surgió la idea</h2>
+      <p>Todo comenzó con un grupo de estudiantes que compartían una misma inquietud: ¿por qué no convertir nuestra voz en el motor del cambio?</p>
+      <p>De esas charlas informales surgió la visión de un movimiento sólido, creativo y comprometido.</p>
+      <p>Hoy somos la prueba de que cuando la juventud se organiza, la transformación es posible.</p>
+    </div>
+    <div class="historia-img">
+      <img src="/img/revolution.jpg" alt="Estudiantes unidos" />
+    </div>
+  </section>
+
+  <section id="proposito" class="section">
+    <div class="proposito">
+      <div class="proposito-text">
+        <h2>🎯 Nuestro Propósito</h2>
+        <p>Construir un colegio más humano, más justo y más unido. Queremos que cada estudiante sienta que su voz cuenta y que sus talentos tienen un espacio para brillar.</p>
+        <p>Defendemos la igualdad, la libertad y la justicia, fomentando la creatividad, la solidaridad y el respeto mutuo.</p>
+      </div>
+      <div class="proposito-img">
+        <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=800&q=80" alt="Visión de futuro" />
+      </div>
+    </div>
+
+    <div class="porque" style="margin-top:3rem;">
+      <div class="porque-text">
+        <h2>🌱 ¿Por qué surgimos?</h2>
+        <p>Nuestro colegio —con casi 10.000 m², canchas, un cafetín moderno, aulas Hyflex y vínculos internacionales— tenía todo para ser ejemplo académico y humano. Queremos que aquí se escuchen todas las voces, que las buenas ideas se hagan realidad y que la convivencia sea justa para todos. 🔥</p>
+      </div>
+      <div class="porque-img">
+        <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=800&q=80" alt="Por qué surgimos" />
+      </div>
+    </div>
+
+    <div class="vision" style="margin-top:3rem;">
+      <div class="vision-text">
+        <h2>🌟 Nuestra Visión</h2>
+        <p>Ser un referente estudiantil que transforme el Colegio Juan Pablo II en un espacio inclusivo, creativo y justo. 👥</p>
+      </div>
+      <div class="vision-img">
+        <img src="https://images.unsplash.com/photo-1508780709619-79562169bc64?auto=format&fit=crop&w=800&q=80" alt="Visión" />
+      </div>
+    </div>
+
+    <div class="mision" style="margin-top:3rem;">
+      <div class="mision-text">
+        <h2>🎯 Nuestra Misión</h2>
+        <p>Promover la participación estudiantil con proyectos concretos en comunicación, innovación, justicia y sostenibilidad, apoyando el desarrollo académico y humano de todos. 🛠️</p>
+      </div>
+      <div class="mision-img">
+        <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=800&q=80" alt="Misión" />
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Revolution JPII | Unidos por un mejor colegio</p>
+  </footer>
+</body>
+</html>
